@@ -1,8 +1,10 @@
-FROM openjdk:13-alpine
-ARG VERSION=5.7
+FROM docker.io/eclipse-temurin:25 AS build
 WORKDIR /opt
 RUN \
-	echo "Fetching version ${VERSION}"; \
-	wget -O- "http://theweb.dk/KickAssembler/KickAssembler${VERSION}.zip" \
-	| unzip - KickAss.jar
-ENTRYPOINT ["java", "-jar", "/opt/KickAss.jar"]
+  apt-get update; \
+  apt-get install -y wget unzip; \
+	echo "Fetching KickAssembler"; \
+  mkdir /opt/ka/; \
+	wget -O/tmp/app.zip "https://www.theweb.dk/KickAssembler/KickAssembler.zip"; \
+  unzip -d /opt/ka /tmp/app.zip KickAss.jar
+ENTRYPOINT ["java", "-jar", "/opt/ka/KickAss.jar"]
