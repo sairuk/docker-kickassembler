@@ -5,7 +5,7 @@ A containerized version of the [Kick Assembler](http://www.theweb.dk/KickAssembl
 ## Usage
 Assemble `myprog.asm` from current directory:
 ```sh
-$ podman run --rm -it -v "$PWD:/src" -w /src neochrome/kickassembler myprog.asm
+$ podman run --rm -it -v "$PWD:/src" -w /src localhost/kickassembler myprog.asm
 ```
 
 ## Tags

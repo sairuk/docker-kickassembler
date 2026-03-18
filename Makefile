@@ -1,7 +1,7 @@
 all: build
 
 build:
-	podman build -t neochrome/kickassembler .
+	podman build -t kickassembler .
 
 clean:
-	podman rmi neochrome/kickassembler
+	podman rmi kickassembler
